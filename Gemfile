@@ -28,3 +28,7 @@ gem "spring", "~> 4.4", :group => :development
 gem "spring-commands-rspec", "~> 1.0", :group => :development
 
 gem "dotenv", "~> 3.2", :groups => [:development, :test]
+
+gem "rubocop", "~> 1.84", :group => :development
+
+gem "ruby-lsp", "~> 0.26.7", :group => :development
