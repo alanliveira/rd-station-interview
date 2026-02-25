@@ -26,3 +26,5 @@ end
 gem "spring", "~> 4.4", :group => :development
 
 gem "spring-commands-rspec", "~> 1.0", :group => :development
+
+gem "dotenv", "~> 3.2", :groups => [:development, :test]
