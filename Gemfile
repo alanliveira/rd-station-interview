@@ -22,3 +22,7 @@ end
 
 group :development do
 end
+
+gem "spring", "~> 4.4", :group => :development
+
+gem "spring-commands-rspec", "~> 1.0", :group => :development
