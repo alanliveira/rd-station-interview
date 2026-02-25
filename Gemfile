@@ -20,5 +20,28 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.1.0'
 end
 
-group :development do
-end
+gem "spring", "~> 4.4", :group => :development
+
+gem "spring-commands-rspec", "~> 1.0", :group => :development
+
+gem "dotenv", "~> 3.2", :groups => [:development, :test]
+
+gem "rubocop", "~> 1.84", :group => [:development, :test]
+
+gem "ruby-lsp", "~> 0.26.7", :group => :development
+
+gem "factory_bot_rails", "~> 6.5", :groups => [:developemnt, :test]
+
+gem "faker", "~> 3.6", :groups => [:developemnt, :test]
+
+gem "overmind", "~> 2.5"
+
+gem "guard-rspec", "~> 4.7", :groups => [:developemnt, :test]
+
+gem "simplecov", "~> 0.22.0", :groups => [:development, :test]
+
+gem "rubycritic", "~> 5.0", :groups => [:development, :test]
+
+gem "bundler-audit", "~> 0.9.3", :groups => [:development, :test]
+
+gem "brakeman", "~> 8.0", :groups => [:development, :test]
