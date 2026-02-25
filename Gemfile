@@ -33,3 +33,7 @@ gem "ruby-lsp", "~> 0.26.7", :group => :development
 gem "factory_bot_rails", "~> 6.5", :groups => [:developemnt, :test]
 
 gem "faker", "~> 3.6", :groups => [:developemnt, :test]
+
+gem "overmind", "~> 2.5"
+
+gem "guard-rspec", "~> 4.7", :groups => [:developemnt, :test]
