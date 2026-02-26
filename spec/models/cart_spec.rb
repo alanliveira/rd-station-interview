@@ -23,7 +23,7 @@ RSpec.describe Cart, type: :model do
 
     it 'removes the shopping cart if abandoned for a certain time' do
       shopping_cart.mark_as_abandoned
-      expect { shopping_cart.remove_if_abandoned }.to change { Cart.count }.by(-1)
+      expect { shopping_cart.remove_if_abandoned }.to change { ShoppingCart.count }.by(-1)
     end
   end
 end
