@@ -1,5 +1,11 @@
 class ShoppingCart < ApplicationRecord
+  belongs_to :cart
+
   enum :status, { pending: 'pending', abandoned: 'abandoned' }
+
+  after_create_commit do
+    MarkCartAsAbandonedJob.perform_in(1.hour, id)
+  end
 
   def mark_as_abandoned
     abandoned!

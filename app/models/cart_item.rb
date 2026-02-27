@@ -8,13 +8,20 @@ class CartItem < ApplicationRecord
   before_validation :register_price, on: :create
   before_validation :calculate_price
 
-  after_commit :update_cart_total_price
+  after_save :update_cart_total_price
+  after_destroy :update_cart_total_price
 
   private
 
-  def register_price = (self.unit_price = product.price).to_f
+  def register_price
+    self.unit_price = product.price
+  end
 
-  def calculate_price = (self.total_price = unit_price * quantity).to_f
+  def calculate_price
+    self.total_price = unit_price * quantity
+  end
 
-  def update_cart_total_price = cart.calculate_total_price
+  def update_cart_total_price
+    cart.calculate_total_price
+  end
 end
