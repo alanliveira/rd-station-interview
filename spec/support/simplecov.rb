@@ -1,3 +1,9 @@
-require 'simplecov'
+# require "simplecov"
+# require "simplecov-json"
 
-SimpleCov.start 'rails'
+# SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
+#   SimpleCov::Formatter::HTMLFormatter,
+#   SimpleCov::Formatter::JSONFormatter
+# ])
+
+# SimpleCov.start 'rails'

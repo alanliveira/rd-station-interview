@@ -51,6 +51,7 @@ jobs:
         run: bundle exec rubocop -f github
 
   test:
+    permissions: write-all
     runs-on: ubuntu-latest
 
     services:
@@ -86,4 +87,10 @@ jobs:
         run: bin/rails db:setup
 
       - name: Run RSpec
-        run: bin/rspec
+        run: bundle exec rspec
+
+      - uses: joshmfrankel/simplecov-check-action@main
+        with:
+          minimum_suite_coverage: 85
+          minimum_file_coverage: 70
+          github_token: ${{ secrets.GITHUB_TOKEN }}
