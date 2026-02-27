@@ -11,4 +11,9 @@ inherit_from: .rubocop_todo.yml
 #
 # See https://docs.rubocop.org/rubocop/configuration
 Style/NumericLiterals:
-    Enabled: false
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+
