@@ -51,6 +51,7 @@ jobs:
         run: bundle exec rubocop -f github
 
   test:
+    permissions: write-all
     runs-on: ubuntu-latest
 
     services:
