@@ -32,7 +32,7 @@ RSpec.describe "/cart", type: :request do
     context 'when the cart already exists' do
       include_context 'session double'
 
-      let!(:cart) { create(:cart, :with_shopping_cart) }
+      let!(:cart) { create(:cart) }
       let!(:product) { create(:product) }
 
       let(:session_hash) { {} }
@@ -86,7 +86,7 @@ RSpec.describe "/cart", type: :request do
         session_hash[:cart_id] = cart.id
       end
 
-      let!(:cart) { create(:cart, :with_shopping_cart) }
+      let!(:cart) { create(:cart) }
       let!(:product) { create(:product) }
 
       let(:session_hash) { {} }
@@ -122,7 +122,7 @@ RSpec.describe "/cart", type: :request do
       session_hash[:cart_id] = cart.id
     end
 
-    let!(:cart) { create(:cart, :with_shopping_cart) }
+    let!(:cart) { create(:cart) }
     let!(:product) { create(:product, price: 35.0) }
     let!(:cart_item) { create(:cart_item, cart: cart, product: product, quantity: 1) }
 
@@ -166,7 +166,7 @@ RSpec.describe "/cart", type: :request do
       session_hash[:cart_id] = cart.id
     end
 
-    let!(:cart) { create(:cart, :with_shopping_cart) }
+    let!(:cart) { create(:cart) }
     let(:product) { create(:product, name: "Test Product", price: 10.0) }
     let(:cart_item) { create(:cart_item, cart: cart, product: product, quantity: 1) }
 
@@ -212,7 +212,7 @@ RSpec.describe "/cart", type: :request do
       session_hash[:cart_id] = cart.id
     end
 
-    let!(:cart) { create(:cart, :with_shopping_cart) }
+    let!(:cart) { create(:cart) }
     let!(:product1) { create(:product) }
     let!(:product2) { create(:product) }
     let!(:cart_item1) { create(:cart_item, cart: cart, product: product1, quantity: 1) }

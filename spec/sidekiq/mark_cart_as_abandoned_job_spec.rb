@@ -4,39 +4,37 @@ require 'sidekiq/testing'
 Sidekiq::Testing.fake!
 
 RSpec.describe MarkCartAsAbandonedJob, type: :job do
-  let(:cart) { Cart.create!(total_price: 10) }
-
   describe '#perform' do
     context 'when cart is inactive for more than 3 hours' do
-      let!(:shopping_cart) { create(:shopping_cart, cart: cart, last_interaction_at: 4.hours.ago) }
+      let!(:cart) { create(:cart, last_interaction_at: 4.hours.ago) }
 
       it 'marks the cart as abandoned' do
-        described_class.new.perform(shopping_cart.id)
+        described_class.new.perform(cart.id)
 
-        expect(shopping_cart.reload).to be_abandoned
+        expect(cart.reload).to be_abandoned
       end
     end
 
     context 'when cart is abandoned for more than 7 days' do
-      let!(:shopping_cart) do
-        ShoppingCart.create!(
-          cart: cart,
+      let!(:cart) do
+        create(
+          :cart,
           status: :abandoned,
           last_interaction_at: 8.days.ago
         )
       end
 
       it 'removes the cart' do
-        described_class.new.perform(shopping_cart.id)
+        described_class.new.perform(cart.id)
 
-        expect(ShoppingCart.exists?(shopping_cart.id)).to be false
+        expect(Cart.exists?(cart.id)).to be false
       end
     end
 
     context 'when cart is still active' do
-      let!(:shopping_cart) do
-        ShoppingCart.create!(
-          cart: cart,
+      let!(:cart) do
+        create(
+          :cart,
           status: :pending,
           last_interaction_at: 30.minutes.ago
         )
@@ -44,12 +42,12 @@ RSpec.describe MarkCartAsAbandonedJob, type: :job do
 
       it 're-schedules the job for 1 hour later' do
         expect do
-          described_class.new.perform(shopping_cart.id)
+          described_class.new.perform(cart.id)
         end.to change(described_class.jobs, :size).by(1)
 
         job = described_class.jobs.last
 
-        expect(job['args']).to eq([shopping_cart.id])
+        expect(job['args']).to eq([cart.id])
       end
     end
 

@@ -1,13 +1,8 @@
 FactoryBot.define do
   factory :cart do
     total_price { 0 }
-
-    # cria automaticamente um shopping_cart se você quiser
-    trait :with_shopping_cart do
-      after(:create) do |cart|
-        create(:shopping_cart, cart: cart)
-      end
-    end
+    last_interaction_at { Time.current }
+    status { 'pending' }
 
     trait :with_items do
       after(:create) do |cart|

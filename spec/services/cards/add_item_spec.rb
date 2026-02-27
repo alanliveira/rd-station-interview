@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Carts::AddItemService, type: :service do
   context '.call' do
-    let!(:cart) { create(:cart, :with_shopping_cart) }
+    let!(:cart) { create(:cart) }
     let!(:product) { create(:product) }
     let!(:cart_item) { create(:cart_item, cart: cart, product: product, quantity: 1) }
 
