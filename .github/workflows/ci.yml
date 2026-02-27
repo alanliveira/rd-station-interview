@@ -87,7 +87,7 @@ jobs:
         run: bin/rails db:setup
 
       - name: Run RSpec
-        run: bin/rspec
+        run: bin/rspec specs/
 
       - uses: joshmfrankel/simplecov-check-action@main
         with:
