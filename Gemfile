@@ -47,3 +47,5 @@ gem "bundler-audit", "~> 0.9.3", :groups => [:development, :test]
 gem "brakeman", "~> 8.0", :groups => [:development, :test]
 
 gem "jbuilder", "~> 2.14"
+
+gem "database_cleaner-active_record", "~> 2.2", :group => :test

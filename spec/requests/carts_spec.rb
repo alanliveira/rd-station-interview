@@ -65,14 +65,14 @@ RSpec.describe "/cart", type: :request do
     context 'when the response 404' do
       it 'return status not_found' do
         post '/cart',
-             params: { product_id: 1, quantity: 1 },
+             params: { product_id: -1, quantity: 1 },
              as: :json
         expect(response).to have_http_status(:not_found)
       end
 
       it 'return quantity less or equal to 0' do
         post '/cart',
-             params: { product_id: 1, quantity: 0 },
+             params: { product_id: -1, quantity: 0 },
              as: :json
 
         expect(response).to have_http_status(:not_found)
